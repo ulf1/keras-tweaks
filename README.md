@@ -26,7 +26,7 @@ Check the [examples](http://github.com/ulf1/keras-tweaks/examples) folder for no
 Install a virtual environment
 
 ```
-python3.8 -m venv .venv
+python3.6 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt --no-cache-dir
