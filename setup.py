@@ -8,7 +8,7 @@ def read(fname):
 
 setup(name='keras-tweaks',
       version='0.1.0',
-      description='lorem ipsum',
+      description='Utility functions for Keras/Tensorflow2.',
       long_description=read('README.md'),
       long_description_content_type='text/markdown',
       url='http://github.com/ulf1/keras-tweaks',

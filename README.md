@@ -1,4 +1,5 @@
 # keras-tweaks
+Utility functions for Keras/Tensorflow2.
 
 ## Table of Contents
 * [Installation](#installation)
