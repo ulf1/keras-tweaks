@@ -19,5 +19,5 @@ setup(name='keras-tweaks',
       install_requires=[
           'setuptools>=40.0.0',
           'tensorflow>=2.2.0'],
-      python_requires='>=3.8',
+      python_requires='>=3.6',
       zip_safe=False)
