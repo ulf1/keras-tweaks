@@ -17,6 +17,7 @@ setup(name='keras-tweaks',
       license='MIT',
       packages=['keras-tweaks'],
       install_requires=[
-          'setuptools>=40.0.0'],
+          'setuptools>=40.0.0',
+          'tensorflow>=2.2.0'],
       python_requires='>=3.8',
       zip_safe=False)
