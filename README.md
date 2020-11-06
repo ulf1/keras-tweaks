@@ -1,4 +1,5 @@
 # keras-tweaks
+Utility functions for Keras/Tensorflow2.
 
 ## Table of Contents
 * [Installation](#installation)
@@ -25,7 +26,7 @@ Check the [examples](http://github.com/ulf1/keras-tweaks/examples) folder for no
 Install a virtual environment
 
 ```
-python3.8 -m venv .venv
+python3.6 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt --no-cache-dir
@@ -50,10 +51,6 @@ find . -type d -name "__pycache__" | xargs rm -r
 rm -r .pytest_cache
 rm -r .venv
 ```
-
-
-## Debugging
-* Notebooks to profile python code are in the [profile](http://github.com/ulf1/keras-tweaks/profile) folder
 
 
 ## Support
