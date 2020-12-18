@@ -30,11 +30,11 @@ masks = idseqs_to_mask(
 print(tf.sparse.to_dense(masks))
 ```
 
-See [example](http://github.com/ulf1/keras-tweaks/examples/help1.ipynb)
+See [example](https://github.com/ulf1/keras-tweaks/blob/master/examples/help1.ipynb)
 
 
 ### Multiply row vector with sparse matrix
-Please check the notebooks for [an example](http://github.com/ulf1/keras-tweaks/examples/dense_sparse_matmul-example.ipynb) and [an explanation](http://github.com/ulf1/keras-tweaks/examples/dense_sparse_matmul-explanation.ipynb)
+Please check the notebooks for [an example](https://github.com/ulf1/keras-tweaks/blob/master/examples/dense_sparse_matmul-example.ipynb) and [an explanation](https://github.com/ulf1/keras-tweaks/blob/master/examples/dense_sparse_matmul-explanations.ipynb)
 
 
 ```py
