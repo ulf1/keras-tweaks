@@ -1,2 +1,3 @@
 # public packages (see setup.py)
-tensorflow>=2.0.0
+tensorflow==2.*
+sparsity-pattern>=0.4.*
