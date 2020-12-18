@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/keras-tweaks.svg)](https://badge.fury.io/py/keras-tweaks)
+
 # keras-tweaks
 Utility functions for Keras/Tensorflow2.
 
@@ -14,6 +16,20 @@ pip install keras-tweaks
 ## Usage
 
 ### ID Sequence to Bool Mask
+
+```py
+import tensorflow as tf
+from keras_tweaks import idseqs_to_mask
+
+idseqs = [[1, 1, 0, 0, 2, 2, 3], [1, 3, 2, 1, 0, 0, 2]]
+
+masks = idseqs_to_mask(
+    idseqs, n_seqlen=6, ignore=[1],
+    dtype=tf.uint8, dense=False)
+
+print(tf.sparse.to_dense(masks))
+```
+
 See [example](http://github.com/ulf1/keras-tweaks/examples/help1.ipynb)
 
 
