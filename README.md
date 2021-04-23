@@ -1,4 +1,6 @@
 [![PyPI version](https://badge.fury.io/py/keras-tweaks.svg)](https://badge.fury.io/py/keras-tweaks)
+[![keras-tweaks](https://snyk.io/advisor/python/keras-tweaks/badge.svg)](https://snyk.io/advisor/python/keras-tweaks)
+
 
 # keras-tweaks
 Utility functions for Keras/Tensorflow2.
