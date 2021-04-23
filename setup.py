@@ -1,5 +1,4 @@
 from setuptools import setup
-import pypandoc
 
 
 def get_version(path):
@@ -15,7 +14,7 @@ def get_version(path):
 setup(name='keras-tweaks',
       version=get_version("keras_tweaks/__init__.py"),
       description='Utility functions for Keras/Tensorflow2.',
-      long_description=pypandoc.convert('README.md', 'rst'),
+      long_description='README.rst',
       url='http://github.com/ulf1/keras-tweaks',
       author='Ulf Hamster',
       author_email='554c46@gmail.com',
@@ -25,4 +24,4 @@ setup(name='keras-tweaks',
           'tensorflow==2.*',
           'sparsity-pattern>=0.4.*'],
       python_requires='>=3.6',
-      zip_safe=False)
+      zip_safe=True)
