@@ -1,4 +1,8 @@
 [![PyPI version](https://badge.fury.io/py/keras-tweaks.svg)](https://badge.fury.io/py/keras-tweaks)
+[![keras-tweaks](https://snyk.io/advisor/python/keras-tweaks/badge.svg)](https://snyk.io/advisor/python/keras-tweaks)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/ulf1/keras-tweaks.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ulf1/keras-tweaks/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/ulf1/keras-tweaks.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ulf1/keras-tweaks/context:python)
+[![deepcode](https://www.deepcode.ai/api/gh/badge?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybTEiOiJnaCIsIm93bmVyMSI6InVsZjEiLCJyZXBvMSI6ImtlcmFzLXR3ZWFrcyIsImluY2x1ZGVMaW50IjpmYWxzZSwiYXV0aG9ySWQiOjI5NDUyLCJpYXQiOjE2MTk1MzY4MzF9.1Fcr7gY_bfkdVac1GPvyUVTv269_RGVFcc7KD7TJYCA)](https://www.deepcode.ai/app/gh/ulf1/keras-tweaks/_/dashboard?utm_content=gh%2Fulf1%2Fkeras-tweaks)
 
 # keras-tweaks
 Utility functions for Keras/Tensorflow2.
@@ -100,7 +104,14 @@ pip install -r requirements-demo.txt --no-cache-dir
 * Jupyter for the examples: `jupyter lab`
 * Check syntax: `flake8 --ignore=F401 --exclude=$(grep -v '^#' .gitignore | xargs | sed -e 's/ /,/g')`
 * Run Unit Tests: `pytest`
-* Upload to PyPi with twine: `python setup.py sdist && twine upload -r pypi dist/*`
+
+Publish
+
+```sh
+pandoc README.md --from markdown --to rst -s -o README.rst
+python setup.py sdist 
+twine upload -r pypi dist/*
+```
 
 ### Clean up 
 
