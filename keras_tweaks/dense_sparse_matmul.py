@@ -32,12 +32,12 @@ def dense_sparse_matmul(denV: tf.Tensor, spW: tf.SparseTensor) -> tf.Tensor:
     if denV.shape.ndims == 3:
         # W * V_(batch, seqlen, dim)
         Wt = tf.sparse.transpose(spW, perm=[1, 0])
-        ht = tf.transpose(denV, perm=[0, 2, 1])
-        # out = tf.TensorArray(tf.float32, size=ht.shape[0])
+        ht = tf.transpose(denV, perm=[1, 2, 0])
         out = tf.TensorArray(tf.float32, dynamic_size=True, size=0)
+        # out = tf.TensorArray(tf.float32, size=ht.shape[0])
         for i in tf.range(ht.shape[0]):
             tmp = tf.sparse.sparse_dense_matmul(Wt, ht[i])
             out = out.write(i, tmp)
-        return tf.transpose(out.stack(), perm=[0, 2, 1])
+        return tf.transpose(out.stack(), perm=[2, 0, 1])
 
     raise ValueError("Invalid shape: {}".format(denV.shape))
