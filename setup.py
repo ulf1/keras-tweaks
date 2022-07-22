@@ -28,7 +28,7 @@ setup(name='keras-tweaks',
       license='Apache License 2.0',
       packages=['keras_tweaks'],
       install_requires=[
-          'tensorflow==2.*',
-          'sparsity-pattern>=0.4.*'],
+          'tensorflow>=2,<3',
+          'sparsity_pattern>=0.4.3,<1'],
       python_requires='>=3.6',
       zip_safe=True)
