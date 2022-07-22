@@ -30,5 +30,5 @@ setup(name='keras-tweaks',
       install_requires=[
           'tensorflow>=2,<3',
           'sparsity_pattern>=0.4.3,<1'],
-      python_requires='>=3.6',
+      python_requires='>=3.7',
       zip_safe=True)
