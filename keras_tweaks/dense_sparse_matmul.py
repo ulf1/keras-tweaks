@@ -5,11 +5,11 @@ def dense_sparse_matmul(denV: tf.Tensor, spW: tf.SparseTensor) -> tf.Tensor:
     """Multiply row vector with sparse matrix
 
     Parameters:
-        denV (tf.Tensor): Dense BxN row vector.
+        denV (tf.Tensor): Dense BxN or BxTxN dense tensor.
         spW (tf.SparseTensor): Sparse NxM matrix.
 
     Returns:
-        tf.Tensor: Dense BxM row vector
+        tf.Tensor: Dense BxM or BxTxM dense tensor
 
     Motivation:
         TF only supports multiplying a sparse matrix with a column vector.

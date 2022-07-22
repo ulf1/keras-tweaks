@@ -36,7 +36,7 @@ class Test_dense_sparse_matmul(tf.test.TestCase):
         assert net.shape == (2, 4)
         self.assertAllEqual(net, [[12., 5., 21.]])
 
-    def test3(self):
+    def test4(self):
         # (batch=2, seqlen=4, dim=3)
         h = tf.constant([
             [[1., 2., 3.], [4., 5., 6.], [7., 8., 9.], [10., 11., 12.]],
