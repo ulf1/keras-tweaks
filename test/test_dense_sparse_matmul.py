@@ -10,7 +10,7 @@ class Test_dense_sparse_matmul(tf.test.TestCase):
             values=[1., 2., 3., 4., 5.],
             dense_shape=(3, 4))
         net = dense_sparse_matmul(h, W)
-        assert net.shape == (1, 4)
+        assert list(net.shape) == [1, 4]
         self.assertAllEqual(net, [[12., 5., 6., 15.]])
 
     def test2(self):
@@ -21,8 +21,8 @@ class Test_dense_sparse_matmul(tf.test.TestCase):
             values=[1., 2., 3., 4., 5.],
             dense_shape=(3, 4))
         net = dense_sparse_matmul(h, W)
-        assert net.shape == (1, 4)
-        self.assertAllEqual(net, [[12., 5., 21., 0.]])
+        assert list(net.shape) == [1, 4]
+        self.assertAllEqual(net, [[12., 5., 6., 15.]])
 
     def test3(self):
         # (batch=4, dim=3)
@@ -33,8 +33,9 @@ class Test_dense_sparse_matmul(tf.test.TestCase):
             values=[1., 2., 3., 4., 5.],
             dense_shape=(3, 2))
         net = dense_sparse_matmul(h, W)
-        assert net.shape == (2, 4)
-        self.assertAllEqual(net, [[12., 5., 21.]])
+        assert list(net.shape) == [4, 2]
+        self.assertAllEqual(net, [
+            [18., 20.], [39., 44.], [60., 68.], [81., 92.]])
 
     def test4(self):
         # (batch=2, seqlen=4, dim=3)
@@ -47,8 +48,11 @@ class Test_dense_sparse_matmul(tf.test.TestCase):
             values=[1., 2., 3., 4., 5.],
             dense_shape=(3, 2))
         net = dense_sparse_matmul(h, W)
-        assert net.shape == (2, 4, 2)
-        self.assertAllEqual(net, [[12., 5., 21.]])
+        assert list(net.shape) == [2, 4, 2]
+        self.assertAllEqual(net, [
+            [[18., 20.], [39., 44.], [60., 68.], [81., 92.]],
+            [[73., 84.], [52., 60.], [31., 36.], [3., 4.]]
+        ])
 
 
 if __name__ == "__main__":
