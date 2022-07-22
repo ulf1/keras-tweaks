@@ -6,10 +6,48 @@ class Test_dense_sparse_matmul(tf.test.TestCase):
     def test1(self):
         h = tf.constant([1., 2., 3.])
         W = tf.sparse.SparseTensor(
-            indices=([0, 1], [1, 1], [1, 2], [2, 0], [2, 2]),
+            indices=([0, 1], [1, 1], [1, 2], [2, 0], [2, 3]),
             values=[1., 2., 3., 4., 5.],
-            dense_shape=(3, 3))
+            dense_shape=(3, 4))
         net = dense_sparse_matmul(h, W)
+        assert net.shape == (1, 4)
+        self.assertAllEqual(net, [[12., 5., 6., 15.]])
+
+    def test2(self):
+        # (batch=1, dim=3)
+        h = tf.constant([[1., 2., 3.]])
+        W = tf.sparse.SparseTensor(
+            indices=([0, 1], [1, 1], [1, 2], [2, 0], [2, 3]),
+            values=[1., 2., 3., 4., 5.],
+            dense_shape=(3, 4))
+        net = dense_sparse_matmul(h, W)
+        assert net.shape == (1, 4)
+        self.assertAllEqual(net, [[12., 5., 21., 0.]])
+
+    def test3(self):
+        # (batch=4, dim=3)
+        h = tf.constant([
+            [1., 2., 3.], [4., 5., 6.], [7., 8., 9.], [10., 11., 12.]])
+        W = tf.sparse.SparseTensor(
+            indices=([0, 1], [1, 1], [1, 0], [2, 0], [2, 1]),
+            values=[1., 2., 3., 4., 5.],
+            dense_shape=(3, 2))
+        net = dense_sparse_matmul(h, W)
+        assert net.shape == (2, 4)
+        self.assertAllEqual(net, [[12., 5., 21.]])
+
+    def test3(self):
+        # (batch=2, seqlen=4, dim=3)
+        h = tf.constant([
+            [[1., 2., 3.], [4., 5., 6.], [7., 8., 9.], [10., 11., 12.]],
+            [[12., 11., 10.], [9., 8., 7.], [6., 5., 4.], [2., 1., 0.]],
+        ])
+        W = tf.sparse.SparseTensor(
+            indices=([0, 1], [1, 1], [1, 0], [2, 0], [2, 1]),
+            values=[1., 2., 3., 4., 5.],
+            dense_shape=(3, 2))
+        net = dense_sparse_matmul(h, W)
+        assert net.shape == (2, 4, 2)
         self.assertAllEqual(net, [[12., 5., 21.]])
 
 
