@@ -8,6 +8,7 @@ class TestSparsityPattern(tf.test.TestCase):
         layer = normalizations.get('layernorm')
         y = layer(x)
         assert x.shape == y.shape
+        assert not tf.reduce_any(tf.math.is_nan(y))
 
     def test11(self):
         ln_config = {
@@ -25,21 +26,25 @@ class TestSparsityPattern(tf.test.TestCase):
         layer = normalizations.get('layernorm', **ln_config)
         y = layer(x)
         assert x.shape == y.shape
+        assert not tf.reduce_any(tf.math.is_nan(y))
 
     def test20(self):
         x = tf.random.normal((3, 4, 5))
         layer = normalizations.get('layernorm-nobias')
         y = layer(x)
         assert x.shape == y.shape
+        assert not tf.reduce_any(tf.math.is_nan(y))
 
     def test30(self):
         x = tf.random.normal((3, 4, 5))
         layer = normalizations.get('scalenorm')
         y = layer(x)
         assert x.shape == y.shape
+        assert not tf.reduce_any(tf.math.is_nan(y))
 
     def test31(self):
         x = tf.random.normal((3, 4, 5))
         layer = normalizations.get('scalenorm', eps=1e-4)
         y = layer(x)
         assert x.shape == y.shape
+        assert not tf.reduce_any(tf.math.is_nan(y))

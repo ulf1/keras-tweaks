@@ -3,7 +3,7 @@ from typing import Optional
 
 
 def get(method: str, *args, **kwargs):
-    if method in ("layernorm"):
+    if method in ("layernorm"):  # https://arxiv.org/abs/1607.06450
         return tf.keras.layers.LayerNormalization(
             *args, **kwargs, axis=-1, scale=True, center=True)
     elif method in ("layernorm-nobias"):
@@ -39,5 +39,7 @@ class ScaleNorm(tf.keras.layers.Layer):
         self.weight = tf.Variable(1.0)
 
     def call(self, x):
-        return self.weight * x / tf.maximum(
-            tf.norm(x, axis=self.axis, keepdims=True), self.eps)
+        return self.weight * x / tf.clip_by_value(
+            tf.norm(x, axis=self.axis, keepdims=True), 
+            clip_value_min=self.eps,
+            clip_value_max=1. / self.eps)
