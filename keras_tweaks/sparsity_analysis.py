@@ -31,18 +31,16 @@ def feedback_signal_patterns(W: tf.Tensor, max_recur: int):
     assert W.shape[0] == W.shape[1]
     ts = np.zeros((dim, max_recur), dtype=np.int8)
     # start
-    res = []
     for origin in tf.range(dim):
         s = np.zeros((1, dim), dtype=np.int32)
         s[0, origin] = 1
         s = tf.constant(s)
         # simulate
         for t in range(max_recur):
-            #s = (dense_sparse_matmul(s, W) > 0)
-            #s = tf.cast(s, tf.int32)
-            s = dense_sparse_matmul(s, W) 
+            s = (dense_sparse_matmul(s, W) > 0)
+            s = tf.cast(s, tf.int32)
+            # s = dense_sparse_matmul(s, W)
             if s[0, origin]:
                 ts[origin, t] = 1
     # done
     return ts
-
