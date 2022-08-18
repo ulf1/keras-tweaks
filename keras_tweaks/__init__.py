@@ -1,4 +1,4 @@
-__version__ = '0.4.1'
+__version__ = '0.4.2'
 
 from .idseqs_to_mask import idseqs_to_mask
 from .dense_sparse_matmul import dense_sparse_matmul

@@ -8,7 +8,7 @@ def get(method: str, *args, **kwargs):
             *args, **kwargs, axis=-1, scale=True, center=True)
     elif method in ("layernorm-nobias"):
         return tf.keras.layers.LayerNormalization(
-            *args, **kwargs, axis=-1, scale=True, center=True)
+            *args, **kwargs, axis=-1, scale=True, center=False)
     elif method in ("unitnorm"):
         return tf.keras.layers.UnitNormalization(
             *args, **kwargs, axis=-1)
